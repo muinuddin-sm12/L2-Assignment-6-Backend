@@ -9,8 +9,19 @@ import jwt from 'jsonwebtoken';
  
 
 const registerUser = async (payload: IUser) => {
-    const result = await User.create(payload);
-    return result;
+    await User.create(payload);
+    
+    const jwtPayload = {
+        email: payload?.email,
+        role: payload?.role,
+    };
+    const token = jwt.sign(jwtPayload, config.jwt_access_secret as string, {
+        expiresIn: '7d',
+    });
+
+    return {
+        accessToken: token
+    }
 }
 
 const loginUser = async (payload: {email: string; password: string}) => {
