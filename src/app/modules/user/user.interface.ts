@@ -2,6 +2,12 @@
 import { Model } from "mongoose";
 import { USER_ROLE } from "./user.constant";
 
+
+export enum UserRole {
+    ADMIN = 'admin',
+    CUSTOMER = 'customer',
+    PROVIDER = 'provider',
+}
 export interface IUser {
     _id: string;
     name: string;
