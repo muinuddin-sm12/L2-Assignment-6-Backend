@@ -2,7 +2,6 @@
 import { Model } from "mongoose";
 import { USER_ROLE } from "./user.constant";
 
-
 export enum UserRole {
     ADMIN = 'admin',
     CUSTOMER = 'customer',
