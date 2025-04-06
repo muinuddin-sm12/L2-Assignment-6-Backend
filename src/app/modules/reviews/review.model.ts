@@ -1,0 +1,12 @@
+import { model, Schema, Types } from 'mongoose';
+import { TReview } from './review.interface';
+import { ProviderModel } from '../mealProvider/provider.model';
+
+const reviewSchema = new Schema<TReview>({
+  provider: { type: Types.ObjectId, ref: ProviderModel, required: true },
+  reviewerName: { type: String, required: true },
+  rating: { type: Number, required: true },
+  comment: { type: String, required: true },
+});
+
+export const Review = model<TReview>('Review', reviewSchema);
