@@ -7,7 +7,6 @@ const providerShcema = new Schema<IProvider>({
     cuisineSpecialties: {type: [String], required: true},
     experience: {type: String, required: true},
     pricingRange: {type: String, required: true},
-    averageRating: {type: Number, required: true},
     availableDays: {type: [String], required: true},
     availableTimeSlots: {type: String, required: true},
     location: {type: String, required: true}

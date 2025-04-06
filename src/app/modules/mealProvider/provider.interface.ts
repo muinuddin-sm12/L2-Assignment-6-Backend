@@ -6,7 +6,6 @@ export interface IProvider {
     cuisineSpecialties : string[];
     experience: string;
     pricingRange: string;
-    averageRating: number;
     availableDays: string[];
     availableTimeSlots: string;
     location: string; 
