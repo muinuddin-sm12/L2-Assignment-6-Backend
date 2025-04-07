@@ -11,4 +11,4 @@ const providerShcema = new Schema<IProvider>({
     location: {type: String, required: true}
 })
 
-export const ProviderModel = model<IProvider>('Provider', providerShcema)
+export const Provider = model<IProvider>('Provider', providerShcema)

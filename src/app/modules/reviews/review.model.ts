@@ -1,9 +1,8 @@
 import { model, Schema, Types } from 'mongoose';
 import { TReview } from './review.interface';
-import { ProviderModel } from '../mealProvider/provider.model';
 
 const reviewSchema = new Schema<TReview>({
-  provider: { type: Types.ObjectId, ref: ProviderModel, required: true },
+  provider: { type: Types.ObjectId, ref: "Provider", required: true },
   meal: {type: Types.ObjectId, required: true},
   reviewerName: { type: String, required: true },
   rating: { type: Number, required: true },

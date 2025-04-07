@@ -1,20 +1,20 @@
 import { IProvider } from "./provider.interface";
-import { ProviderModel } from "./provider.model";
+import { Provider } from "./provider.model";
 
 const createProvider = async(providerData: IProvider) => {
-    const result = await ProviderModel.create(providerData);
+    const result = await Provider.create(providerData);
     return result;
 }
 const getAllProviders = async () => {
-    const result = await ProviderModel.find();
+    const result = await Provider.find();
     return result;
 }
 const getAProvider = async (providerId: string) => {
-    const result = await ProviderModel.findById(providerId);
+    const result = await Provider.findById(providerId);
     return result;
 }
 const updateAProvider = async (providerId: string, providerData: Partial<IProvider>) => {
-    const reuslt = await ProviderModel.findByIdAndUpdate(providerId, providerData)
+    const reuslt = await Provider.findByIdAndUpdate(providerId, providerData)
     return reuslt;
 }
 
