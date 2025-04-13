@@ -1,8 +1,13 @@
+import { IImageFile } from "../../interface/IImageFile";
 import { IProvider } from "./provider.interface";
 import { Provider } from "./provider.model";
 
-const createProvider = async(providerData: IProvider) => {
-    const result = await Provider.create(providerData);
+const createProvider = async(providerData: Partial<IProvider>, logo: IImageFile) => {
+    const provider = new Provider({
+        ...providerData,
+        logo: logo?.path 
+    })
+    const result = await provider.save();
     return result;
 }
 const getAllProviders = async () => {

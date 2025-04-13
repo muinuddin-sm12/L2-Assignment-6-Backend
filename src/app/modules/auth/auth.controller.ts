@@ -2,9 +2,10 @@ import { Request, Response } from 'express';
 import catchAsync from '../../utils/catchAsync';
 import { AuthServices } from './auth.service';
 import httpStatus from 'http-status';
+import { IImageFile } from '../../interface/IImageFile';
 
 const register = catchAsync(async (req: Request, res: Response) => {
-  const result = await AuthServices.registerUser(req.body);
+  const result = await AuthServices.registerUser(req.body, req.file as IImageFile);
   res.status(httpStatus.CREATED).json({
     success: true,
     message: 'User registered successfully!',

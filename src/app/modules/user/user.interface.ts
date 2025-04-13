@@ -11,7 +11,7 @@ export interface IUser {
     _id: string;
     name: string;
     email: string;
-    phone?: string;
+    image: string;
     password: string;
     role: "customer" | "provider";
     _v?: number | null;
@@ -29,5 +29,5 @@ export interface UserModel extends Model<IUser> {
     ): Promise<boolean>;
   }
   
-  export type TUserRole = keyof typeof USER_ROLE;
+export type TUserRole = keyof typeof USER_ROLE;
   

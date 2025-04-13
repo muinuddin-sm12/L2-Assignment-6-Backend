@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 import catchAsync from "../../utils/catchAsync";
 import { ProviderServices } from "./provider.service";
+import { IImageFile } from "../../interface/IImageFile";
 
 
 const createProvider = catchAsync(async(req: Request, res:Response) => {
-    const providerData = req.body;
-    const result = await ProviderServices.createProvider(providerData);
+    const result = await ProviderServices.createProvider(req.body, req.file as IImageFile);
     res.status(200).json({
         message: 'Provider is created successfully',
         status: true,
-        data: result,
+        data: result, 
     })
 })
 const getAllProviders = catchAsync(async(req:Request, res: Response) => {
