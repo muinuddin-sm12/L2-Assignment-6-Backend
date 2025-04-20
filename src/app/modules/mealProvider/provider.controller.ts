@@ -5,6 +5,7 @@ import { IImageFile } from "../../interface/IImageFile";
 
 
 const createProvider = catchAsync(async(req: Request, res:Response) => {
+    console.log(req.body, req.file)
     const result = await ProviderServices.createProvider(req.body, req.file as IImageFile);
     res.status(200).json({
         message: 'Provider is created successfully',

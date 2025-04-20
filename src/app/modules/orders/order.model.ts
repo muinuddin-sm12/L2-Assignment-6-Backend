@@ -2,12 +2,11 @@ import { model, Schema } from 'mongoose';
 import { IOrder } from './order.interface';
 
 const orderSchema = new Schema<IOrder>({
-  providerId: { type: Schema.Types.ObjectId, ref: 'Provider',  },
+  providerId: { type: Schema.Types.ObjectId, ref: 'Provider'},
   customerId: { type: Schema.Types.ObjectId, ref: 'User',  },
-  mealId: { type: Schema.Types.ObjectId, ref: 'Meal', },
+  mealPlanId: { type: Schema.Types.ObjectId, ref: 'Meal', },
   customizations: { type: String },
-  quantity: { type: Number , },
-  totalPrice: { type: Number , },
+  price: { type: Number , },
   deliverySchedule: { type: String },
   orderStatus: {
     type: String,

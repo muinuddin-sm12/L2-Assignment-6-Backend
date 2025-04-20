@@ -4,12 +4,11 @@ import { Order } from './order.model';
 import { orderUtils } from './order.utils';
 
 const createOrder = async (payload: Partial<IOrder>, client_ip: string) => {
-  if (!payload?.mealId) {
+  if (!payload?.mealPlanId) {
     throw new Error('Order is not specified');
   }
-
+  // const mealPlanData = await MealPlan.findById(payload.mealPlanId);
   const user = await User.findById(payload?.customerId);
-  //   console.log(user)
   if (!user) {
     throw new Error('Something went wrong!');
   }
@@ -18,7 +17,7 @@ const createOrder = async (payload: Partial<IOrder>, client_ip: string) => {
 
   // payment integration
   const shurjopayPayload = {
-    amount: payload.totalPrice,
+    amount: payload.price,
     order_id: order._id,
     currency: 'USD',
     customer_name: user.name,
@@ -30,7 +29,6 @@ const createOrder = async (payload: Partial<IOrder>, client_ip: string) => {
   };
 
   const payment = await orderUtils.makePaymentAsync(shurjopayPayload);
-  // console.log(payment)
   if (payment?.transactionStatus) {
     order = await order.updateOne({
       transaction: {
@@ -47,6 +45,26 @@ const getOrders = async () => {
   const data = await Order.find();
   return data;
 };
+const getUserOrders = async (userId: string) => {
+  const data = await Order.find({customerId: userId});
+  // console.log(data)
+  return data;
+};
+const getProviderOrders = async (id: string) => {
+  const data = await Order.find({providerId: id});
+  // console.log(data)
+  return data;
+};
+
+const updateOrderStatus = async(id: string, orderData:Partial<IOrder>) => {
+  const result = await Order.findByIdAndUpdate(
+    id,
+    { $set: orderData },
+    { new: true },
+  );
+  return result;
+}
+
 
 const verifyPayment = async (order_id: string) => {
   const verifiedPayment = await orderUtils.verifyPaymentAsync(order_id);
@@ -82,5 +100,8 @@ const verifyPayment = async (order_id: string) => {
 export const orderService = {
   createOrder,
   getOrders,
+  getUserOrders,
+  getProviderOrders,
+  updateOrderStatus,
   verifyPayment,
 };

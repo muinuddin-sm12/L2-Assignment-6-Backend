@@ -26,7 +26,9 @@ const auth = (...requiredRoles: UserRole[]) => {
 
          const { email, role } = decoded;
          const user = await User.findOne({ email, role});
-
+         if(user?.isActive){
+            throw new AppError(status.BAD_REQUEST, 'This User is Blocked')
+         };
          if (!user) {
             throw new AppError(
                status.NOT_FOUND,
@@ -41,7 +43,7 @@ const auth = (...requiredRoles: UserRole[]) => {
             );
          }
 
-        //  req.user = decoded as JwtPayload & { role: string };
+         // req.user = decoded as JwtPayload & { role: string };
          next();
       }
    );

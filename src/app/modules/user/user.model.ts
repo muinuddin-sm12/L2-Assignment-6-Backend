@@ -26,6 +26,7 @@ const userSchema = new Schema<IUser>(
         },
         default: 'customer',
     },
+    isActive: {type: Boolean, default: false},
 }, {timestamps: true});
 userSchema.pre('save', async function (next) {
     const user = this;

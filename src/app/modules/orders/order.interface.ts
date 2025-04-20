@@ -3,10 +3,9 @@ import { Types } from "mongoose";
 export interface IOrder {
     providerId: Types.ObjectId;
     customerId: Types.ObjectId;
-    mealId: Types.ObjectId;
+    mealPlanId: Types.ObjectId;
     customizations: string;
-    quantity: number;
-    totalPrice: number;
+    price: number;
     deliverySchedule: string,
     orderStatus: 'pending-payment' | 'paid' | 'accepted' | 'declined' | 'delivered' | 'cancelled';
     paymentStatus: 'pending' | 'paid' | 'cancelled';

@@ -13,7 +13,8 @@ export interface IUser {
     email: string;
     image: string;
     password: string;
-    role: "customer" | "provider";
+    role: "customer" | "provider" | "admin";
+    isActive?: boolean;
     _v?: number | null;
     createdAt?: Date;
     updatedAt?: Date;

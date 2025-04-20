@@ -1,10 +1,11 @@
+import { Types } from "mongoose";
+
 export interface IProvider extends Document  {
+    userId: Types.ObjectId;
     providerName : string;
-    logo?: string;
+    about: string;
+    logo: string;
     cuisineSpecialties : string[];
     experience: string;
-    pricingRange: string;
-    availableDays: string[];
-    availableTimeSlots: string;
     address: string; 
 }

@@ -15,6 +15,7 @@ const registerUser = async (payload: Partial<IUser>, image: IImageFile) => {
   const userData = await User.create(register);
 
   const jwtPayload = {
+    _id: userData?._id,
     email: payload?.email,
     role: userData?.role,
   };
@@ -43,6 +44,7 @@ const loginUser = async (payload: { email: string; password: string }) => {
   }
 
   const jwtPayload = {
+    _id: user?._id,
     email: user?.email,
     role: user?.role,
   };
@@ -59,7 +61,6 @@ const changePassword = async (
   userId: string,
   payload: { oldPassword: string; newPassword: string },
 ) => {
-  // console.log('user data from auth', userId, payload)
   // checking if the user is exist
   const user = await User.findById(userId).select('password');
   // console.log(user)

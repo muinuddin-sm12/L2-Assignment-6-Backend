@@ -1,14 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { IMealDocument, IPortionOption } from './meal.interface';
-
-export const PortionOptionSchema = new Schema<IPortionOption>(
-  {
-    size: { type: String, enum: ['single', 'family', 'large'], required: true },
-    price: { type: Number, required: true },
-    description: { type: String, required: true },
-  },
-  { _id: false },
-);
+import { IMealDocument } from './meal.interface';
 
 const MealSchema = new Schema<IMealDocument>(
   {
@@ -20,14 +11,10 @@ const MealSchema = new Schema<IMealDocument>(
     mealName: { type: String, required: true },
     description: { type: String, required: true },
     image: { type: String },
+    price: {type: Number, required: true},
     cuisine: {type: String, required: true},
     ingredients: { type: [String], required: true },
     dietaryTags: { type: [String], default: [] },
-    calories: { type: Number, required: true },
-    portionSize: { type: [PortionOptionSchema], required: true },
-    availableDays: { type: [String], required: true },
-    deliveryTimeSlots: { type: [String], required: true },
-    isVegan: { type: Boolean, default: false },
     isAvailable: { type: Boolean, default: true },
   },
   {
