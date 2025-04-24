@@ -10,7 +10,7 @@ const createMeal = catchAsync(async (req: Request, res: Response) => {
   );
   res.status(200).json({
     message: 'Meal Posted Successfully',
-    status: true,
+    success: true,
     data: result,
   });
 });
@@ -18,7 +18,16 @@ const getAllMeal = catchAsync(async(req: Request, res: Response) => {
   const result = await MealServices.getAllMeal(req.query);
   res.status(200).json({
     message: 'Meals retrieved successfully',
-    status: true,
+    success: true,
+    data: result,
+  })
+})
+const getSingleMeal = catchAsync(async(req: Request, res: Response) => {
+  const mealId = req.params.mealId
+  const result = await MealServices.getSingleMeal(mealId);
+  res.status(200).json({
+    message: 'Meal data retrieved successfully',
+    success: true,
     data: result,
   })
 })
@@ -27,4 +36,5 @@ const getAllMeal = catchAsync(async(req: Request, res: Response) => {
 export const MealControllers = {
   createMeal,
   getAllMeal,
+  getSingleMeal
 };

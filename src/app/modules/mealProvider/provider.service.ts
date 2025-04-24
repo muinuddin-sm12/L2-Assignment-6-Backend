@@ -7,7 +7,7 @@ import { Provider } from "./provider.model";
 import httpStatus from 'http-status';
 
 const createProvider = async(providerData: Partial<IProvider>, logo: IImageFile) => {
-    console.log(logo?.path);
+    // console.log(logo?.path);
     const provider = new Provider({
         ...providerData,
         logo: logo?.path 

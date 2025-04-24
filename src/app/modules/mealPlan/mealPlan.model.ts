@@ -17,7 +17,7 @@ const MealPlanShcema = new Schema<IMealPlan>({
       message: '{VALUE} is not supported',
     },
   },
-  pricePerDay: {type: Number, required: true},
+  pricePerMeal: {type: Number, required: true},
   mealPlanType: {
     type: String,
     enum: {
@@ -25,14 +25,14 @@ const MealPlanShcema = new Schema<IMealPlan>({
         message: '{VALUE} is not supported',
     }
   },
-  weeklyMenu: {
-    Sunday: {type: dailyMealSchema},
-    Monday: {type: dailyMealSchema},
-    Tuesday: {type: dailyMealSchema},
-    Wednesday: {type: dailyMealSchema},
-    Thursday: {type: dailyMealSchema},
-    Friday: {type: dailyMealSchema},
-    Saturday: {type: dailyMealSchema},
+  menu: {
+    sunday: {type: dailyMealSchema},
+    monday: {type: dailyMealSchema},
+    tuesday: {type: dailyMealSchema},
+    wednesday: {type: dailyMealSchema},
+    thursday: {type: dailyMealSchema},
+    friday: {type: dailyMealSchema},
+    saturday: {type: dailyMealSchema},
 
   },
   isAvailable: {type: Boolean, default: true}

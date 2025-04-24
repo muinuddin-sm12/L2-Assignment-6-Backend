@@ -10,16 +10,16 @@ export interface IMealPlan {
     title: string;
     description: string;
     scheduleType: 'weekly' | 'monthly';
-    pricePerDay: number;
+    pricePerMeal: number;
     mealPlanType: 'balanced' | 'high-protein' | 'low-carb' | 'keto' | 'vegetarian' | 'custom';
-    weeklyMenu: {
-        SunDay: IDailyMeal,
-        Monday: IDailyMeal,
-        TuesDay: IDailyMeal,
-        WednesDay: IDailyMeal,
-        Thursday: IDailyMeal,
-        Friday: IDailyMeal,
-        Saturday: IDailyMeal,
+    menu: {
+        sunday: IDailyMeal,
+        monday: IDailyMeal,
+        tuesday: IDailyMeal,
+        wednesday: IDailyMeal,
+        thursday: IDailyMeal,
+        friday: IDailyMeal,
+        saturday: IDailyMeal,
     };
     isAvailable: boolean;
 }

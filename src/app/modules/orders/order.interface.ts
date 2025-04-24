@@ -4,9 +4,10 @@ export interface IOrder {
     providerId: Types.ObjectId;
     customerId: Types.ObjectId;
     mealPlanId: Types.ObjectId;
-    customizations: string;
+    // customizations: string;
     price: number;
     deliverySchedule: string,
+    mealPerDay: string[];
     orderStatus: 'pending-payment' | 'paid' | 'accepted' | 'declined' | 'delivered' | 'cancelled';
     paymentStatus: 'pending' | 'paid' | 'cancelled';
     transaction: {

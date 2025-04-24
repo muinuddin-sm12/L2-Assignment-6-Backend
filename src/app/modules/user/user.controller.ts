@@ -6,7 +6,7 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await UserServices.getAllUsers();
   res.status(200).json({
     message: 'Users retrieved successfully',
-    status: true,
+    success: true,
     data: result,
   });
 });
@@ -15,7 +15,7 @@ const getAUser = catchAsync(async (req: Request, res: Response) => {
   const result = await UserServices.getAUser(id);
   res.status(200).json({
     message: 'User retrieved successfully',
-    status: true,
+    success: true,
     data: result,
   });
 });
@@ -25,7 +25,7 @@ const updateAUser = catchAsync(async (req: Request, res: Response) => {
   const result = await UserServices.updateAUser(id, body);
   res.status(200).json({
     message: 'User updated successfully',
-    status: true,
+    success: true,
     data: result,
   });
 });

@@ -13,6 +13,8 @@ router.post(
   parseBody,
   MealControllers.createMeal,
 );
-router.get('/', MealControllers.getAllMeal)
+router.get('/', MealControllers.getAllMeal);
+router.get('/:mealId', MealControllers.getSingleMeal);
+
 
 export const MealRoutes = router;

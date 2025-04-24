@@ -5,11 +5,10 @@ import { IImageFile } from "../../interface/IImageFile";
 
 
 const createProvider = catchAsync(async(req: Request, res:Response) => {
-    console.log(req.body, req.file)
     const result = await ProviderServices.createProvider(req.body, req.file as IImageFile);
     res.status(200).json({
         message: 'Provider is created successfully',
-        status: true,
+        success: true,
         data: result, 
     })
 })
@@ -17,7 +16,7 @@ const getAllProviders = catchAsync(async(req:Request, res: Response) => {
     const result = await ProviderServices.getAllProviders()
     res.status(200).json({
         message: 'Providers data retrieved successfully!',
-        status: true,
+        success: true,
         data: result
     })
 })
@@ -26,7 +25,7 @@ const getAProvider = catchAsync(async(req:Request, res: Response) => {
     const result = await ProviderServices.getAProvider(id)
     res.status(200).json({
         message: "Provider data retrieved successfully",
-        status: true,
+        success: true,
         data: result
     })
 })

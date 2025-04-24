@@ -7,7 +7,7 @@ const addReview = catchAsync(async( req: Request, res: Response) => {
     const result = await ReviewServices.createReview(data);
     res.status(200).json({
         message: 'Review created successfully',
-        status: true,
+        success: true,
         data: result
     })
 })
@@ -16,7 +16,7 @@ const getProviderReviews = catchAsync(async(req: Request, res: Response) => {
     const result = await ReviewServices.getProviderReviews(providerId);
     res.status(200).json({
         message: 'Provider Reviews retrieved successfully',
-        status: true,
+        success: true,
         data: result
     })
 })
@@ -24,7 +24,7 @@ const getAllReviews = catchAsync(async(req:Request, res: Response) => {
     const result = await ReviewServices.getAllReviews();
     res.status(200).json({
         message: 'Reviews retrieved successfully',
-        status: true,
+        success: true,
         data: result
     })
 })

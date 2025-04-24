@@ -5,8 +5,9 @@ const orderSchema = new Schema<IOrder>({
   providerId: { type: Schema.Types.ObjectId, ref: 'Provider'},
   customerId: { type: Schema.Types.ObjectId, ref: 'User',  },
   mealPlanId: { type: Schema.Types.ObjectId, ref: 'Meal', },
-  customizations: { type: String },
+  // customizations: { type: String },
   price: { type: Number , },
+  mealPerDay: {type: [String]},
   deliverySchedule: { type: String },
   orderStatus: {
     type: String,
