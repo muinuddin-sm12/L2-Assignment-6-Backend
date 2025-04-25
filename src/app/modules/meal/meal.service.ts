@@ -26,7 +26,7 @@ const getSingleMeal = async (mealId: string) => {
 };
 const getProviderMeals = async (id: string) => {
   const data = await Meal.find({providerId: id});
-  console.log('server, ' ,data)
+  // console.log('server, ' ,data)
   return data;
 };
 
