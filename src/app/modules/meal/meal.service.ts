@@ -24,9 +24,16 @@ const getSingleMeal = async (mealId: string) => {
   const result = await Meal.findById(mealId).populate("providerId");
   return result;
 };
+const getProviderMeals = async (id: string) => {
+  const data = await Meal.find({providerId: id});
+  console.log('server, ' ,data)
+  return data;
+};
+
 
 export const MealServices = {
   createMeal,
   getAllMeal,
   getSingleMeal,
+  getProviderMeals
 };

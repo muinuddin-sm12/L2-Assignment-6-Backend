@@ -32,9 +32,20 @@ const getSingleMeal = catchAsync(async(req: Request, res: Response) => {
   })
 })
 
+const getProviderMeals = catchAsync(async(req: Request, res: Response) => {
+  const order = await MealServices.getProviderMeals(req.params.providerId);
+  res.status(200).json({
+      message: 'Provider Meals data retrieved successfully',
+      success: true,
+      data: order,
+  })
+})
+
+
 
 export const MealControllers = {
   createMeal,
   getAllMeal,
-  getSingleMeal
+  getSingleMeal,
+  getProviderMeals
 };

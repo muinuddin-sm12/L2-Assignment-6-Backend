@@ -14,6 +14,7 @@ router.post(
   MealControllers.createMeal,
 );
 router.get('/', MealControllers.getAllMeal);
+router.get('/provider/:providerId', MealControllers.getProviderMeals);
 router.get('/:mealId', MealControllers.getSingleMeal);
 
 
