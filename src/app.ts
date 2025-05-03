@@ -11,7 +11,7 @@ app.use(cors());
 app.use('/api/v1', router)
 
 app.get('/', (req:Request, res:Response) => {
-    res.send("Welcome to L2-Assignment-6!")
+    res.send("Welcome to Meal Craft!")
 })
 
 app.use(globalErrorHandler);
